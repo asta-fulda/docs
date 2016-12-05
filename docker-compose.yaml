@@ -3,9 +3,10 @@ services:
     jekyll:
         build: .
         image: astadocs
+        container_name: astadocs
         volumes:
             - './:/src'
         restart: always
         ports:
             - '4000:4000'
-        command: serve -H 0.0.0.0
+        command: bundle update && bundle exec jekyll serve -H 0.0.0.0
